@@ -2,7 +2,7 @@
 
 This project is a simple Java application built using Maven and integrated with Jenkins for a complete CI/CD pipeline. It includes:
 
-- Java 21 Application
+- Java 11 Application
 - Maven Build and Test
 - JUnit Testing
 - SonarQube Static Code Analysis
@@ -11,7 +11,7 @@ This project is a simple Java application built using Maven and integrated with 
 - Jenkins Declarative Pipeline
 
 Tool	Recommended Version
-Java	21
+Java	11
 Maven	3.8.5+
 Jenkins	LTS
 Docker	20.10+
@@ -36,7 +36,7 @@ java-maven-docker-app/
 
 ## ⚙️ Prerequisites
 
-- Java 21
+- Java 11
 - Maven
 - Docker
 - Jenkins (with required plugins)
@@ -108,18 +108,28 @@ The pipeline includes:
 
 ### Required Jenkins Tools & Plugins
 
-- JDK 21
+- JDK 11
 - Maven (e.g., 3.8.5)
 - Docker
 - SonarQube Scanner Plugin
 - Trivy CLI installed on agent
 - DockerHub credentials (optional)
 
-### SonarQube Setup in Jenkins
 
-1. Go to `Manage Jenkins → Configure System`
-2. Add a SonarQube server with name `MySonarQube`
-3. Add authentication token if needed
+
+### SonarQube Setup in Jenkins
+Manage Jenkins → Configure System → SonarQube
+
+Name: SonarQube
+
+Server URL: http://localhost:9000
+
+Add token under Manage Jenkins → Credentials → Secret Text
+
+Also in Global Tool Configuration:
+
+Add SonarQube Scanner (Name: SonarScanner)
+
 
 ---
 
@@ -218,10 +228,19 @@ Name: JDK-21
 JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
 
 Maven:
+. Install Maven on Jenkins
+Go to Manage Jenkins → Global Tool Configuration
 
-Name: Maven-3.8.5
+Scroll to Maven section
 
-Auto-install or install manually.
+Click Add Maven
+
+Set:
+
+Name: Maven-3.8.5 (or any name you want)
+
+Check ✅ Install automatically or manually provide a path
+
 
 SonarQube:
 
@@ -234,6 +253,18 @@ Name: MySonarQube
 URL: http://<your-sonarqube-server>:9000
 
 Token-based auth (generate token in Sonar UI)
+
+Manage Jenkins → Configure System → SonarQube
+
+Name: SonarQube
+
+Server URL: http://localhost:9000
+
+Add token under Manage Jenkins → Credentials → Secret Text
+
+Also in Global Tool Configuration:
+
+Add SonarQube Scanner (Name: SonarScanner)
 
 ✅ Step 5: Create Jenkins Credentials
 Manage Jenkins → Credentials → Global:
