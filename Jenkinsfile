@@ -26,7 +26,14 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                sh 'mvn test'
+                script {
+                    def result = sh(script: 'mvn test', returnStatus: true)
+                    if (result == 0) {
+                        echo '✅ Unit tests passed!'
+                    } else {
+                        error '❌ Unit tests failed!'
+                    }
+                }
             }
         }
 
@@ -36,12 +43,6 @@ pipeline {
                 withSonarQubeEnv('MySonarQube') {
                     sh 'mvn sonar:sonar'
                 }
-            }
-        }
-
-stage('Publish JUnit Results') {
-            steps {
-                junit '**/target/surefire-reports/*.xml'
             }
         }
 
