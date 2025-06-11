@@ -2,7 +2,7 @@
 
 This project is a simple Java application built using Maven and integrated with Jenkins for a complete CI/CD pipeline. It includes:
 
-- Java 11 Application
+- Java 21 Application
 - Maven Build and Test
 - JUnit Testing
 - SonarQube Static Code Analysis
@@ -11,7 +11,7 @@ This project is a simple Java application built using Maven and integrated with 
 - Jenkins Declarative Pipeline
 
 Tool	Recommended Version
-Java	11
+Java	21
 Maven	3.8.5+
 Jenkins	LTS
 Docker	20.10+
@@ -36,7 +36,7 @@ java-maven-docker-app/
 
 ## ⚙️ Prerequisites
 
-- Java 11
+- Java 21
 - Maven
 - Docker
 - Jenkins (with required plugins)
@@ -108,7 +108,7 @@ The pipeline includes:
 
 ### Required Jenkins Tools & Plugins
 
-- JDK 11
+- JDK 21
 - Maven (e.g., 3.8.5)
 - Docker
 - SonarQube Scanner Plugin
