@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Anil-55/demo-java.git'
+                git 'https://github.com/Anil-55/java-cicd-junit'
             }
         }
 
